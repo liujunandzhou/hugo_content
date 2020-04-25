@@ -141,6 +141,10 @@ http://p.qpic.cn/qqconadmin/0/446d8aba6ba2409d9d09f82192b3d1dd/0)
 
 意思是: highlightInClient和chroma不能同时配置,否则可能出现页面展现不正常的问题。
 
+2. hugo的目录结构
+采用"**##**"作为顶级标题
+采用"**###**"作为二级标题
+
 ## 参考文档
 
 [知乎好用的hugo主题](https://www.zhihu.com/question/266175192?sort=created)
