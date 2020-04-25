@@ -6,16 +6,24 @@ menu: "main"
 weight: 50
 
 ---
+#### 简介
+本人刘军,目前就职于腾讯CSIG在线教育部,负责企鹅辅导后台相关的开发和管理工作。有7年的开发经验,2年的管理经验。一直致力于后台架构的演进和研发效率的提升在企鹅辅导后台的落地。
 
-Hugo is a static site engine written in Go.
+#### 经历
+* 2009年-2013年 就读于武汉科技大学网络工程专业。
+* 2013年-2016年 在奇虎360搜索事业部担任后台开发,负责搜索相关的研发工作。
+* 2016年-至今  就职于腾讯CSIG在线教育部,担任企鹅辅导开发组组长,负责企鹅辅导产品的后台管理。
 
+#### 擅长领域
+* 语言。c++,golang,python,java等多种开发语言.
+* 存储。有丰富的关系数据库和非关系数据实用经验,熟悉常见的存储。
+* 组件。了解nginx,redis等源码实现。熟悉mysql,redis,mongodb,memcache的使用和原理。熟练了解docker,k8s的原理。
+* 网络。了解tcp/ip协议,有丰富的socket编程经验,有自研内部框架的经验。
+* 技能。了解高性能后端服务器的开发和设计,以及由丰富的后端服务调优经验。
+* 研发流程。专注于CICD等研发流程,在后台的推广使用。
+* 管理。有2年的管理经验,有带超过15人的管理团队的精力。
 
-It makes use of a variety of open source projects including:
+#### 产品介绍
+[官网](https://fudao.qq.com/)
 
-* [Cobra](https://github.com/spf13/cobra)
-* [Viper](https://github.com/spf13/viper)
-* [J Walter Weatherman](https://github.com/spf13/jWalterWeatherman)
-* [Cast](https://github.com/spf13/cast)
-
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
-
+企鹅辅导是专注于K12教育的一款教育产品,是腾讯自营的中小学网校，为6-18岁孩子提供小学、初中、高中全学科一站式课外教学。采用双师直播教学模式，实现直播上课、实时互动、随堂测试等全方位服务。在专业教学产品与先进腾讯科技的双重驱动下，逐渐形成了高效、科学、有趣的领先于行业水平的教学方案
