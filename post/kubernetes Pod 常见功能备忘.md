@@ -2,10 +2,9 @@
 title: "kubernetes Pod 常见功能备忘"
 date: 2020-04-25T18:38:52+08:00
 lastmod: 2020-04-25T21:41:52+08:00
-weight: 50
 draft: false
-tags: ["k8s","docker"]
-categories: ["k8s","docker"]
+tags:  ["k8s","docker"]
+categories:  ["k8s","docker"]
 author: "铁血执着的青春"
 
 ---
