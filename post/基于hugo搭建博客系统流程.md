@@ -9,7 +9,7 @@ author: "铁血执着的青春"
 
 ---
 
-# 介绍
+## 介绍
 
 hugo是一款基于golang开发的静态站点生成工具,能够非常快速的基于markdown生成站点,并且有非常丰富主题可以供选择。它的主要特点:
 
@@ -19,7 +19,7 @@ hugo是一款基于golang开发的静态站点生成工具,能够非常快速的
 
 所以对于很多需要搭建个人博客系统的人来说,hugo是不二选择。
 
-# 安装
+## 安装
 
 hugo的安装也比较简单。直接去官网下载对应二进制即可。
 
@@ -31,14 +31,14 @@ hugo的安装也比较简单。直接去官网下载对应二进制即可。
 
 获取到指定的二进制之后,就可以直接执行命令生成站点了。
 
-# 运行
+## 运行
 
-## 1. 生成我们需要的站点。
+### 1. 生成我们需要的站点。
 选任何一个目录,以我们的站点命名,生成一个静态网站的根目录。
 ```
 hugo new site www.drivecode.cn
 ```
-## 2. 安装指定theme。
+### 2. 安装指定theme。
 ```
 cd www.drivecode.cn
 git clone https://github.com/olOwOlo/hugo-theme-even themes/even
@@ -47,14 +47,14 @@ git clone https://github.com/olOwOlo/hugo-theme-even themes/even
 
 可以直接将config.toml和content目录,拷贝到项目根目录。
 
-## 3. 运行hugo进程。
+### 3. 运行hugo进程。
 接下来就可以直接运行进程了,默认监听在1313端口。
 ```
 /usr/local/hugo/bin/hugo server -p 1313 -v -w -D --appendPort=false -b http://www.drivecode.cn
 ```
 本地目录下的变更,也能够实时感知到。
 
-## 4. nginx配置转发。
+### 4. nginx配置转发。
 因为云服务器上1313端口默认不对外开放,正常情况下,我们都是用80端口做一个二次转发。
 于是我们就需要在nginx上做如下配置:
 
@@ -71,7 +71,7 @@ location / {
 
 于是,通过[http://www.drivecode.cn](http://www.drivecode.cn)进行访问。
 
-## 5. 配置systemd脚本。
+### 5. 配置systemd脚本。
 我们可以配置一个hugo.service脚本,来保证hugo进程常驻内存。
 ```
 [Unit]
@@ -95,8 +95,8 @@ WantedBy=multi-user.target
 HUGO_ARGS="server -p 1313 -v -w -D --appendPort=false -b http://www.drivecode.cn"
 ```
 
-# 评论
-## 集成评论
+## 评论
+### 集成评论
 hugo可以集成的评论系统,有比较多的选择。这里主要是选择 **Valine** 这款评论系统作为评论的存储方案。
 
 >Valine 是一款快速,简洁且高效的无后端评论系统,诞生于2017年8月7日,基于LeanCloud云服务平台来实现。
@@ -121,12 +121,12 @@ hugo可以集成的评论系统,有比较多的选择。这里主要是选择 **
 ```
 至于此,评论系统就可以直接使用了。
 
-## 删除评论
+### 删除评论
 ![
 http://p.qpic.cn/qqconadmin/0/446d8aba6ba2409d9d09f82192b3d1dd/0](
 http://p.qpic.cn/qqconadmin/0/446d8aba6ba2409d9d09f82192b3d1dd/0)
 
-# 打赏
+## 打赏
 配置打赏功能,只需要获取微信打赏二维码和支付宝的二维码即可,配置如下:
 ```
   [params.reward]
@@ -135,13 +135,13 @@ http://p.qpic.cn/qqconadmin/0/446d8aba6ba2409d9d09f82192b3d1dd/0)
     alipay = "<path-of-alipay-qr-code-png>"   
 ```
 
-# 经验总结
+## 经验总结
 1. hightlight的配置必须互斥。
 >Syntax highlighting by Chroma. NOTE: Don't enable `highlightInClient` and `chroma` at the same time!
 
 意思是: highlightInClient和chroma不能同时配置,否则可能出现页面展现不正常的问题。
 
-# 参考文档
+## 参考文档
 
 [知乎好用的hugo主题](https://www.zhihu.com/question/266175192?sort=created)
 
