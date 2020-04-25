@@ -4,11 +4,14 @@ date: 2020-04-25T18:38:52+08:00
 lastmod: 2020-04-25T21:41:52+08:00
 menu: "main"
 weight: 50
+draft: false
+tags: ["k8s","docker"]
+categories: ["k8s","docker"]
+author: "铁血执着的青春"
 
 ---
 
-[TOC]
-#### Pod声明周期和重启策略
+# Pod声明周期和重启策略
 Pod在整个生命周期中,被系统定义为各种状态。
 
 | 状态值    | 描述                                                         |
@@ -19,7 +22,7 @@ Pod在整个生命周期中,被系统定义为各种状态。
 | Failed    | Pod内所有容器均已推出,但至少有一个容器退出为失败状态         |
 | Unknown   | 由于某种原因,无法获取该Pod的状态,可能由于网络问题导致        |
 
-##### Pod重启策略
+## Pod重启策略
 Pod重启策略RestartPolicy应用于Pod内的所有容器，并且仅在Pod所处的Node上由kubelet进行判断和重启操作。当某个容器异常退出或者健康检查失败时，kubelet将根据RestartPolicy的设置来进行相应的操作。
 
 Pod的重启策略包括Always、OnFailure和Never，默认值为Always
@@ -35,7 +38,7 @@ Pod的重启策略与控制方式息息相关，当前可用于管理Pod的控�
 * Job: OnFailure或Never,确保容器执行完成后不再重启.
 * Kubelet: 在Pod失效时自动重启它,不论将RestartPolicy设置为什么值,也不会对Pod进行健康检查.
 
-#### Pod健康检查
+# Pod健康检查
 对于Pod的健康状态检查,可以通过两类探针来检查: **LivenessProbe**和**ReadinessProbe**
 * LivenessProbe探针
 用于判断容器是否存活(Running)状态,如果LivenessProbe探针检测到容器不健康,则kubelet将杀掉该容器,并根据容器的重启策略做相应的处理。如果一个容器不包含你LivenessProbe探针,那么kubelet认为该容器的LivenessProbe探针返回的值永远是"Success".
@@ -43,7 +46,7 @@ Pod的重启策略与控制方式息息相关，当前可用于管理Pod的控�
 * ReadinessProbe探针
 用于判断容器是否处于ready状态,并对外可以提供请求。如果ReadinessProbe探针检测到失败,则Pod的状态将被修改。Endpoint将从Service的EndPoint中删除包含该容器所在Pod的EndPoint,从而保证业务访问的Pod都是有效的。
 
-##### 关键的探针配置参数说明
+## 关键的探针配置参数说明
 
 | 探针参数            | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ |
@@ -55,7 +58,7 @@ Pod的重启策略与控制方式息息相关，当前可用于管理Pod的控�
 
 通过表中的一些参数,可以算出服务从开始到可用的最小键值。也就是pod从创建到最终可用的时间间隔。
 
-##### 探针的类型
+## 探针的类型
 * Http探针 发起要给Http请求。
 * Exec 发起执行一个具体的命令。
 * TCPSocket 表示检测一个TCP端口是否存活。
