@@ -1,4 +1,5 @@
 ---
+
 title: "golang必知必会-golang中的range注意点"
 date: 2020-05-04T19:48:52+08:00
 lastmod: 2020-05-04T19:48:52+08:00
@@ -57,9 +58,7 @@ func main() {
 }
 ```
 上面的代码输出:
-![
-http://p.qpic.cn/qqconadmin/0/bb6b23024da54cbbbecf7fb5acd5bec7/0](
-http://p.qpic.cn/qqconadmin/0/bb6b23024da54cbbbecf7fb5acd5bec7/0)
+![http://p.qpic.cn/qqconadmin/0/bb6b23024da54cbbbecf7fb5acd5bec7/0](http://p.qpic.cn/qqconadmin/0/bb6b23024da54cbbbecf7fb5acd5bec7/0)
 
 >总结:
 >没错,在遍历非指针对象列表的时候,修改非指针的值,是没有用的。因为每一次遍历都是对列表中元素的拷贝.
@@ -96,9 +95,7 @@ func main() {
  ```
  上面的代码输出什么?
  答案是:
- ![
-http://p.qpic.cn/qqconadmin/0/31e915f7b1754915842ad746d7526fb6/0](
-http://p.qpic.cn/qqconadmin/0/31e915f7b1754915842ad746d7526fb6/0)
+![http://p.qpic.cn/qqconadmin/0/31e915f7b1754915842ad746d7526fb6/0](http://p.qpic.cn/qqconadmin/0/31e915f7b1754915842ad746d7526fb6/0)
 
  没错,全是都是一样的,是不是大吃一惊。这基本上是我们使用range关键字,bug的根源.
 
@@ -136,9 +133,7 @@ func evaluteInfos(infos []Info) {
 }
 ```
 这行代码输出什么,没错,代码输出的是:
-![
-http://p.qpic.cn/qqconadmin/0/60d7b19dbfd646a194b39d139a6cf1df/0](
-http://p.qpic.cn/qqconadmin/0/60d7b19dbfd646a194b39d139a6cf1df/0)
+![http://p.qpic.cn/qqconadmin/0/60d7b19dbfd646a194b39d139a6cf1df/0](http://p.qpic.cn/qqconadmin/0/60d7b19dbfd646a194b39d139a6cf1df/0)
 
 这说明我们在遍历的时候,range infos运行的时候,已经提前将len(infos)的值计算出来的,这里的长度是3.所以最终只是会遍历3次,最终元素的个数是6.
 
@@ -152,34 +147,24 @@ http://p.qpic.cn/qqconadmin/0/60d7b19dbfd646a194b39d139a6cf1df/0)
 4.在map遍历过程中,删除元素,这个元素后面就不会出现了.
 
 ### 4. range的支持的类型?
-
-![
-http://p.qpic.cn/qqconadmin/0/c0313e27b7ab42e4b7d31671b6e67f0a/0](
-http://p.qpic.cn/qqconadmin/0/c0313e27b7ab42e4b7d31671b6e67f0a/0)
-
+![http://p.qpic.cn/qqconadmin/0/c0313e27b7ab42e4b7d31671b6e67f0a/0](http://p.qpic.cn/qqconadmin/0/c0313e27b7ab42e4b7d31671b6e67f0a/0)
 对于数组来说,一个数组分配给一个array，内存级别是整个array的一次复制。
 string和slice的分配只是这两个类型头，或者叫做类型元信息结构体的复制，底层数组是没变化的。
 map和channel也一样，只是指针的复制。
 
 ### 5. range的内部实现?
 range本质是for语句的一个语法糖。
-![
-http://p.qpic.cn/qqconadmin/0/d45797d1d06a4294b5fa8c8429b0dfab/0](
-http://p.qpic.cn/qqconadmin/0/d45797d1d06a4294b5fa8c8429b0dfab/0)
+![http://p.qpic.cn/qqconadmin/0/d45797d1d06a4294b5fa8c8429b0dfab/0](http://p.qpic.cn/qqconadmin/0/d45797d1d06a4294b5fa8c8429b0dfab/0)
 
 业务代码实际使用的是:
 INDEX和VALUE变量.
 
 编译器会在循环开始前copy一次循环对象。编译器的编译后的逻辑：
 array：
-![
-http://p.qpic.cn/qqconadmin/0/6a393bfbc8e849d99454497532ac6a99/0](
-http://p.qpic.cn/qqconadmin/0/6a393bfbc8e849d99454497532ac6a99/0)
+![http://p.qpic.cn/qqconadmin/0/6a393bfbc8e849d99454497532ac6a99/0](http://p.qpic.cn/qqconadmin/0/6a393bfbc8e849d99454497532ac6a99/0)
 
 slice：
-![
-http://p.qpic.cn/qqconadmin/0/c0a32aef1e1c41e0b2705f8099dc5ea8/0](
-http://p.qpic.cn/qqconadmin/0/c0a32aef1e1c41e0b2705f8099dc5ea8/0)
+![http://p.qpic.cn/qqconadmin/0/c0a32aef1e1c41e0b2705f8099dc5ea8/0](http://p.qpic.cn/qqconadmin/0/c0a32aef1e1c41e0b2705f8099dc5ea8/0)
 
 ### 6. 汇总回答上面的问题?
 结论:
@@ -187,8 +172,6 @@ http://p.qpic.cn/qqconadmin/0/c0a32aef1e1c41e0b2705f8099dc5ea8/0)
 2.range的右值,是提前evalute的,遍历过程中不会改变.
 
 ## 参考文档
-[range循环内部实现](
-https://www.cnblogs.com/adarking/p/8629191.html)
+[range循环内部实现](https://www.cnblogs.com/adarking/p/8629191.html)
 
-[go range loop internals](
-https://garbagecollected.org/2017/02/22/go-range-loop-internals/)
+[go range loop internals](https://garbagecollected.org/2017/02/22/go-range-loop-internals/)
